@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My First Map</title>
+	<style>
+		#map {
+			height: 500px;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>My First Map</h3>
+	<div id="map"></div>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmA_nB5Ja-EzOKb37_eyIomFhgC6QjEvw"></script>
+	<!-- <script type="text/javascript" src="main.js"></script> -->
+	<script>
+		function startMap() {
+			const ironhackBCN = {
+				lat: 41.3977381,
+				lng: 2.190471916
+			};
+			const map = new google.maps.Map(
+				document.getElementById('map'), {
+					zoom: 5,
+					center: ironhackBCN
+				}
+			);
+
+			const myMarker = new google.maps.Marker({
+				position: {
+					lat: 41.3977381,
+					lng: 2.190471916
+				},
+				map: map,
+				title: "I'm here"
+			});
+
+			const directionsService = new google.maps.DirectionsService;
+			const directionsDisplay = new google.maps.DirectionsRenderer;
+
+			const directionRequest = {
+				origin: {
+					lat: 41.3977381,
+					lng: 2.190471916
+				},
+				destination: 'Madrid, ES',
+				travelMode: 'DRIVING'
+			};
+
+
+			directionsService.route(
+				directionRequest,
+				function (response, status) {
+					if (status === 'OK') {
+						// everything is ok
+						directionsDisplay.setDirections(response);
+
+					} else {
+						// something went wrong
+						window.alert('Directions request failed due to ' + status);
+					}
+				}
+			);
+
+			directionsDisplay.setMap(map);
+		}
+
+		startMap();
+	</script>
+</body>
+
+</html>

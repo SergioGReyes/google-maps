@@ -1,0 +1,16 @@
+{
+  "name": "google-maps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "https-localhost": "^1.1.4",
+    "static-https-server": "^1.0.1"
+  }
+}
