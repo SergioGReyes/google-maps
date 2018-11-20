@@ -15,7 +15,7 @@
 	<h3>My First Map</h3>
 	<div id="map"></div>
 
-	<script src="https://maps.googleapis.com/maps/api/js?key="></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmA_nB5Ja-EzOKb37_eyIomFhgC6QjEvw"></script>
 	<!-- <script type="text/javascript" src="main.js"></script> -->
 	<script>
 		function startMap() {
@@ -39,34 +39,39 @@
 				title: "I'm here"
 			});
 
-			const directionsService = new google.maps.DirectionsService;
-			const directionsDisplay = new google.maps.DirectionsRenderer;
+			setInterval(() => {
+				map.setZoom(Math.random() * 15)
+				map.panTo(new google.maps.LatLng(Math.random() * 50, (Math.random() * 50)))
+			}, 1500);
 
-			const directionRequest = {
-				origin: {
-					lat: 41.3977381,
-					lng: 2.190471916
-				},
-				destination: 'Madrid, ES',
-				travelMode: 'DRIVING'
-			};
+			// const directionsService = new google.maps.DirectionsService;
+			// const directionsDisplay = new google.maps.DirectionsRenderer;
+
+			// const directionRequest = {
+			// 	origin: {
+			// 		lat: 41.3977381,
+			// 		lng: 2.190471916
+			// 	},
+			// 	destination: 'Madrid, ES',
+			// 	travelMode: 'DRIVING'
+			// };
 
 
-			directionsService.route(
-				directionRequest,
-				function (response, status) {
-					if (status === 'OK') {
-						// everything is ok
-						directionsDisplay.setDirections(response);
+			// directionsService.route(
+			// 	directionRequest,
+			// 	function (response, status) {
+			// 		if (status === 'OK') {
+			// 			// everything is ok
+			// 			directionsDisplay.setDirections(response);
 
-					} else {
-						// something went wrong
-						window.alert('Directions request failed due to ' + status);
-					}
-				}
-			);
+			// 		} else {
+			// 			// something went wrong
+			// 			window.alert('Directions request failed due to ' + status);
+			// 		}
+			// 	}
+			// );
 
-			directionsDisplay.setMap(map);
+			// directionsDisplay.setMap(map);
 		}
 
 		startMap();
